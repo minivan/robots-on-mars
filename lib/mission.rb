@@ -12,10 +12,22 @@ class Mission
   end
 
   def simulate
-    ""
+    until all_finished? do
+      rovers.map(&:process_next)
+    end
+
+    to_s
+  end
+
+  def to_s
+    rovers.map(&:to_s).join("\n") + "\n"
   end
 
   private
+
+  def all_finished?
+    rovers.all?(&:finished?)
+  end
 
   def extract_rovers(input)
     rover_hashes = Parsers::Rovers.new(input).process

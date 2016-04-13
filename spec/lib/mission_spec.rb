@@ -19,8 +19,10 @@ OUTPUT
 describe Mission do
   subject { Mission.new(MissionTestInput) }
 
-  it "can compute the rovers' positions given the inputs" do
-    expect(subject.simulate).to eq(MissionTestOutput)
+  describe "#process" do
+    it "can compute the rovers' positions given the inputs" do
+      expect(subject.simulate).to eq(MissionTestOutput)
+    end
   end
 
   describe "setting up the plateau" do

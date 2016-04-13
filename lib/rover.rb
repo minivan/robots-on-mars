@@ -7,6 +7,10 @@ class Rover
     @instructions = params[:instructions]
   end
 
+  def finished?
+    @instructions.empty?
+  end
+
   def to_s
     # TODO: unparse the orientation
     "#{x} #{y} #{orientation[0].upcase}"
@@ -53,8 +57,8 @@ class Rover
     case orientation
     when :north then @y += 1
     when :south then @y -= 1
-    when :west  then @x += 1
-    when :east  then @x -= 1
+    when :west  then @x -= 1
+    when :east  then @x += 1
     end
   end
 end

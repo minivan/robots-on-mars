@@ -6,13 +6,31 @@ describe Rover do
 
   subject { Rover.new(x: 11, y: 10, orientation: orientation, instructions: instructions) }
 
-  describe "dumping to string" do
+  describe "#finished?" do
+    context "when there are no more instructions" do
+      let(:instructions) { "" }
+
+      it "returns true" do
+        expect(subject).to be_finished
+      end
+    end
+
+    context "when there instructions left" do
+      let(:instructions) { "SOMETHING" }
+
+      it "returns false" do
+        expect(subject).not_to be_finished
+      end
+    end
+  end
+
+  describe "#to_s" do
     it "returns a properly formatted string" do
       expect(subject.to_s).to eq("11 10 N")
     end
   end
 
-  describe "processing next commands" do
+  describe "#process_single" do
     let(:instructions) { "LR" }
 
     it "executes the instruction" do
@@ -28,7 +46,7 @@ describe Rover do
     end
   end
 
-  describe "moving forward" do
+  describe "#move" do
     context "when the rover is facing north" do
       let(:orientation) { :north }
 
@@ -48,21 +66,21 @@ describe Rover do
     context "when the rover is facing west" do
       let(:orientation) { :west }
 
-      it "changes the x coordinate by 1" do
-        expect { subject.process_single("M") }.to change { subject.x }.by(1)
+      it "changes the x coordinate by -1" do
+        expect { subject.process_single("M") }.to change { subject.x }.by(-1)
       end
     end
 
     context "when the rover is facing east" do
       let(:orientation) { :east }
 
-      it "changes the x coordinate by -1" do
-        expect { subject.process_single("M") }.to change { subject.x }.by(-1)
+      it "changes the x coordinate by 1" do
+        expect { subject.process_single("M") }.to change { subject.x }.by(1)
       end
     end
   end
 
-  describe "turning left" do
+  describe "#turn_left" do
     before do
       subject.process_single("L")
     end
@@ -100,7 +118,7 @@ describe Rover do
     end
   end
 
-  describe "turning right" do
+  describe "#turn_right" do
     before do
       subject.process_single("R")
     end

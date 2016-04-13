@@ -1,6 +1,6 @@
 require 'parsers/plateau'
 
-AllInput = <<PLATEAU_STRING
+PlateauInput = <<PLATEAU_STRING
 5 6
 1 2 N
 LMLMLMLMM
@@ -9,7 +9,7 @@ MMRMMRMRRM
 PLATEAU_STRING
 
 describe Parsers::Plateau do
-  let(:parser) { Parsers::Plateau.new(AllInput) }
+  let(:parser) { Parsers::Plateau.new(PlateauInput) }
 
   it "correctly extracts the plateau data" do
     expect(parser.process).to eq({ width: 5, height: 6 })
