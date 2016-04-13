@@ -1,4 +1,21 @@
 module Parsers
+  class Rovers
+    def initialize(input)
+      @input = input
+    end
+
+    def process
+      rover_instructions = @input.split("\n")[1..-1]
+      rovers = []
+      rover_instructions.each_slice(2) do |rover_strings|
+        rover_params = Parsers::Rover.new(rover_strings).process
+        rovers << rover_params
+      end
+
+      rovers
+    end
+  end
+
   class Rover
     def initialize(rover_strings)
       # an array of two strings
