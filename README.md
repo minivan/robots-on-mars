@@ -2,6 +2,8 @@
 
 ## Installing
 
+**Note: This has been tested on Ruby 2.2**
+
 ```
 git clone git@github.com:minivan/robots-on-mars.git
 cd robots-on-mars
