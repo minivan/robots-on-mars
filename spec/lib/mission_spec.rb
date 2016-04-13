@@ -29,4 +29,29 @@ describe Mission do
       expect(subject.plateau[:height]).to eq(5)
     end
   end
+
+  describe "setting up the rovers" do
+    it "correctly computes the rovers count" do
+      expect(subject.rovers.size).to eq(2)
+    end
+
+    it "correctly assumes the rovers positions" do
+      expect(subject.rovers.first.x).to eq(1)
+      expect(subject.rovers.first.y).to eq(2)
+
+      expect(subject.rovers.last.x).to  eq(3)
+      expect(subject.rovers.last.y).to  eq(3)
+    end
+
+    it "correctly computes the orientation" do
+      expect(subject.rovers.first.orientation).to eq(:north)
+      expect(subject.rovers.last.orientation).to  eq(:east)
+    end
+
+
+    it "correctly extracts the instructions for the rovers" do
+      expect(subject.rovers.first.instructions).to eq("LMLMLMLMM")
+      expect(subject.rovers.last.instructions).to  eq("MMRMMRMRRM")
+    end
+  end
 end
