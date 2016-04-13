@@ -10,16 +10,16 @@ bundle install
 
 ## Running
 
-If you don't have a test input, you can run the script without any arguments (it will use `sample_input`):
+If you don't have a test input, you can run the script without any arguments (it will use `./sample/input`):
 
 ```sh
-ruby robots.rb
+ruby bin/mars_mission.rb
 ```
 
 If you have a different input, you can pass it to the script
 
 ```sh
-ruby robots.rb input_file_path
+ruby bin/mars_mission.rb input_file_path
 ```
 
 ## Running the tests
