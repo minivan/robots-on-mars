@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'mission'
 
 # NOTE: the squiggly heredoc requires Ruby >= 2.3
 # I've extracted them to constants for now
