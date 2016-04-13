@@ -1,6 +1,6 @@
 require 'parsers/rover'
 
-AllInput = <<ROVERS_STRING
+RoversTestInput = <<ROVERS_STRING
 5 5
 1 2 N
 LMLMLMLMM
@@ -10,7 +10,7 @@ ROVERS_STRING
 
 
 describe Parsers::Rovers do
-  let(:parser) { Parsers::Rovers.new(AllInput) }
+  let(:parser) { Parsers::Rovers.new(RoversTestInput) }
 
   it "correctly extracts the rover data" do
     expect(parser.process).to eq([
