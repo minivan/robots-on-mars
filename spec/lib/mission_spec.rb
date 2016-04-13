@@ -17,15 +17,16 @@ MissionTestOutput = <<OUTPUT
 OUTPUT
 
 describe Mission do
-  let(:input) {
-    @input
-  }
-
-  let(:output) {
-    @output
-  }
+  subject { Mission.new(MissionTestInput) }
 
   it "can compute the rovers' positions given the inputs" do
-    expect(subject.process(MissionTestInput)).to eq(MissionTestOutput)
+    expect(subject.simulate).to eq(MissionTestOutput)
+  end
+
+  describe "setting up the plateau" do
+    it "extracts the plateau sizes" do
+      expect(subject.plateau[:width]).to  eq(5)
+      expect(subject.plateau[:height]).to eq(5)
+    end
   end
 end
